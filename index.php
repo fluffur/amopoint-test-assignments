@@ -17,7 +17,7 @@
     <?php if (isset($_GET['status'])): ?>
         <div class="card">
             <div class="status <?= $_GET['status'] ?>"></div>
-            <?php if ($_GET['status'] == 'success'): ?>
+            <?php if ($_GET['status'] === 'success'): ?>
                 <div><?= $_GET['file_name'] ??= 'Неизвестный файл' ?></div>
                 <div><a href="<?= $_GET['file_path'] ??= '' ?>" class="href">Путь к файлу</a></div>
             <?php else: ?>
@@ -25,19 +25,23 @@
             <?php endif; ?>
 
         </div>
-        <ul class="lines-list">
-            <?php
-            require_once 'helpers.php';
 
-            $lines = file_get_contents($_GET['file_path']);
-            $lines = explode("\n", $lines);
-            $lines = array_map('countDigits', $lines);
-            ?>
+        <?php if ($_GET['status'] === 'success'): ?>
+            <ul class="lines-list">
+                <?php
+                require_once 'helpers.php';
 
-            <?php foreach ($lines as $lineNumber => $digits): ?>
-                <li class="line"><?= $lineNumber + 1 ?> = <?= $digits ?></li>
-            <?php endforeach; ?>
-        </ul>
+                $lines = file_get_contents($_GET['file_path']);
+                $lines = explode("\n", $lines);
+                $lines = array_map('countDigits', $lines);
+                ?>
+
+                <?php foreach ($lines as $lineNumber => $digits): ?>
+                    <li class="line"><?= $lineNumber + 1 ?> = <?= $digits ?></li>
+                <?php endforeach; ?>
+            </ul>
+
+        <?php endif; ?>
     <?php endif; ?>
 
 </div>
