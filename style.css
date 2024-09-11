@@ -1,0 +1,31 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid black;
+}
+
+.status {
+    margin: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.error {
+    background-color: red;
+}
+
+.success {
+    background-color: limegreen;
+}
+
+.lines-list {
+    list-style-type: none;
+}
