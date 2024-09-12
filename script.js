@@ -4,7 +4,6 @@ const hideNotIncludedInputs = () => {
 
     inputs.forEach(input => {
         input.parentElement.style.display = input.name.endsWith(selectedType) ? 'block' : 'none';
-
     });
 }
 
