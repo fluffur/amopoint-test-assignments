@@ -1,19 +1,11 @@
 const hideNotIncludedInputs = () => {
-
     const selectedType = document.querySelector('select[name="type_val"]').value;
-
     const inputs = document.querySelectorAll('input');
 
-
     inputs.forEach(input => {
-        input.parentElement.style.display = 'none';
-    })
+        input.parentElement.style.display = input.name.endsWith(selectedType) ? 'block' : 'none';
 
-    inputs.forEach(input => {
-        if (input.name.endsWith(selectedType)) {
-            input.parentElement.style.display = 'block';
-        }
-    })
+    });
 }
 
 document.addEventListener('DOMContentLoaded', hideNotIncludedInputs);
